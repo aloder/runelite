@@ -209,6 +209,8 @@ public class GrandExchangePlugin extends Plugin
 		boolean shouldStack = offerItem.isStackable() || offer.getTotalQuantity() > 1;
 		BufferedImage itemImage = itemManager.getImage(offer.getItemId(), offer.getTotalQuantity(), shouldStack);
 		SwingUtilities.invokeLater(() -> panel.getOffersPanel().updateOffer(offerItem, itemImage, offerEvent.getOffer(), offerEvent.getSlot()));
+
+		SwingUtilities.invokeLater(() -> panel.getHistoryPanel().updateHistory(offerItem, itemImage, offerEvent.getOffer()));
 	}
 
 	@Subscribe

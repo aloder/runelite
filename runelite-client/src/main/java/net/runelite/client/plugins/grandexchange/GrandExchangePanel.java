@@ -54,6 +54,9 @@ class GrandExchangePanel extends PluginPanel
 	@Getter
 	private GrandExchangeOffersPanel offersPanel;
 
+	@Getter
+	private GrandExchangeHistoryPanel historyPanel;
+
 	@Inject
 	private GrandExchangePanel(ClientThread clientThread, ItemManager itemManager, ScheduledExecutorService executor)
 	{
@@ -65,15 +68,21 @@ class GrandExchangePanel extends PluginPanel
 		// Search Panel
 		searchPanel = new GrandExchangeSearchPanel(clientThread, itemManager, executor);
 
-		//Offers Panel
+		// Offers Panel
 		offersPanel = new GrandExchangeOffersPanel();
+
+		// History Panel
+		historyPanel = new GrandExchangeHistoryPanel();
 
 		MaterialTab offersTab = new MaterialTab("Offers", tabGroup, offersPanel);
 		searchTab = new MaterialTab("Search", tabGroup, searchPanel);
+		MaterialTab historyTab = new MaterialTab("History", tabGroup, historyPanel);
+
 
 		tabGroup.setBorder(new EmptyBorder(5, 0, 0, 0));
 		tabGroup.addTab(offersTab);
 		tabGroup.addTab(searchTab);
+		tabGroup.addTab(historyTab);
 		tabGroup.select(offersTab); // selects the default selected tab
 
 		add(tabGroup, BorderLayout.NORTH);
