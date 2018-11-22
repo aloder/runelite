@@ -62,13 +62,15 @@ public class GrandExchangeHistorySlot extends JPanel
 		setBackground(ColorScheme.DARK_GRAY_COLOR);
 		setBorder(new EmptyBorder(4, 0, 0, 0));
 
+
 		container.setLayout(new GridLayout(1, 1));
 		container.setBorder(new EmptyBorder(0, 0, 4, 0));
 		container.setBackground(ColorScheme.DARKER_GRAY_COLOR);
 
-		SimpleDateFormat format = new SimpleDateFormat("hh:mm a");
 
+		SimpleDateFormat format = new SimpleDateFormat("hh:mm a");
 		container.setToolTipText(format.format(new Date()));
+
 
 		itemIcon.setVerticalAlignment(JLabel.CENTER);
 		itemIcon.setHorizontalAlignment(JLabel.CENTER);
@@ -90,6 +92,7 @@ public class GrandExchangeHistorySlot extends JPanel
 		itemPrice.setVerticalAlignment(JLabel.BOTTOM);
 		itemPrice.setFont(FontManager.getRunescapeSmallFont());
 
+
 		boolean buying = newOffer.getState() == GrandExchangeOfferState.BOUGHT
 				|| newOffer.getState() == GrandExchangeOfferState.CANCELLED_BUY;
 
@@ -100,7 +103,6 @@ public class GrandExchangeHistorySlot extends JPanel
 		String action = buying ? "Spent: " : "Received: ";
 
 		container.setBackground(buying ? BOUGHT_COLOR : SOLD_COLOR);
-
 
 		itemName.setText(offerItem.getName());
 		itemIcon.setIcon(new ImageIcon(itemImage));
